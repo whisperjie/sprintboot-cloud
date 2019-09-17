@@ -1,0 +1,36 @@
+server:
+  port: 8000
+spring:
+  datasource:
+    url: jdbc:h2:mem:h2test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    platform: h2
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+    schema: classpath:db/schema.sql
+    data: classpath:db/data.sql
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /console
+      settings:
+        trace: false
+        web-allow-others: false
+logging:
+  level: debug
+info:
+  app:
+    name: @project.artifactId@
+    encoding: @project.build.sourceEncoding@
+    java:
+      source: @java.version@
+      target: @java.version@
